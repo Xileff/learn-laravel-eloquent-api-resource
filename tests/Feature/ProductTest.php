@@ -27,6 +27,7 @@ class ProductTest extends TestCase
                         'id' => $product->category->id,
                         'name' => $product->category->name
                     ],
+                    'is_expensive' => $product->price > 1000,
                     'price' => $product->price,
                     'created_at' => $product->created_at->toJSON(),
                     'updated_at' => $product->updated_at->toJSON(),

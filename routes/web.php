@@ -43,6 +43,7 @@ Route::get('/api/categories-custom', function () {
 
 Route::get('/api/products/{id}', function ($id) {
     $product = Product::findOrFail($id);
+    $product->load("category");
     return new ProductResource($product);
 });
 
