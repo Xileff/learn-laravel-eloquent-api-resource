@@ -2,6 +2,7 @@
 
 use App\Http\Resources\CategoryCollection;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\CategorySimpleResource;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
