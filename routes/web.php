@@ -3,6 +3,7 @@
 use App\Http\Resources\CategoryCollection;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CategorySimpleResource;
+use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
@@ -41,4 +42,9 @@ Route::get('/api/categories-custom', function () {
 Route::get('/api/products/{id}', function ($id) {
     $product = Product::findOrFail($id);
     return new ProductResource($product);
+});
+
+Route::get('/api/products', function () {
+    $products = Product::all();
+    return new ProductCollection($products);
 });

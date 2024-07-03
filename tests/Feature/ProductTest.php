@@ -33,4 +33,21 @@ class ProductTest extends TestCase
                 ]
             ]);
     }
+
+    public function testCollectionWrap()
+    {
+        $this->seed([CategorySeeder::class, ProductSeeder::class]);
+
+        $response = $this->get('/api/products')->assertStatus(200);
+
+        $names = $response->json('data.*.name');
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->assertContains("Product $i of Category Food", $names);
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->assertContains("Product $i of Category Gadget", $names);
+        }
+    }
 }

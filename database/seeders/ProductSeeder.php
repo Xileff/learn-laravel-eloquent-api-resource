@@ -14,6 +14,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Category::all()->each(function (Category $category) {
+            // Product 0,1,2,3,4 of Category Food, Gadget
             for ($i = 0; $i < 5; $i++) {
                 $category->products()->create([
                     'name' => "Product $i of Category $category->name",
