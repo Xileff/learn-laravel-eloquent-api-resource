@@ -7,6 +7,7 @@ use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,5 +47,11 @@ Route::get('/api/products/{id}', function ($id) {
 
 Route::get('/api/products', function () {
     $products = Product::all();
+    return new ProductCollection($products);
+});
+
+Route::get('/api/products-paging', function (Request $request) {
+    $page = $request->get('page', 1);
+    $products = Product::paginate(perPage: 2, page: $page);
     return new ProductCollection($products);
 });
